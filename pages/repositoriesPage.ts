@@ -1,6 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import CreateRepositoryPage from "./createRepositoryPage";
-import RepositoryDetailCodePage from "./RepositoryDetailCodePage";
+import RepositoryDetailCodePage from "./repositoryDetailCodePage";
 
 export default class RepositoriesPage{
     readonly page: Page
