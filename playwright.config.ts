@@ -36,6 +36,15 @@ export default defineConfig<TestOptions>({
       },
       dependencies: ['setup'],
     },
+
+    {
+      name: 'firefox',
+      use: { 
+        ...devices['Desktop Firefox'],
+        storageState: '.auth/user.json'
+      },
+      dependencies: ['setup'],
+    },
   ],
 
 });
