@@ -1,14 +1,11 @@
 # Use the official Node.js image as the base
-FROM mcr.microsoft.com/playwright:focal
+FROM node:20-bookworm
+
+# Install Playwright and its dependencies
+RUN npx -y playwright install --with-deps
 
 # Set the working directory
 WORKDIR /app
-
-# Install Git to enable cloning repositories
-RUN apt-get update && apt-get install -y git && apt-get clean
-
-# Ensure Playwright dependencies are installed
-RUN npx playwright install
 
 # Copy and execute a script to clone and run tests
 COPY run-tests.sh /run-tests.sh

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set variables
-REPO_URL="https://github.com/your-organization/your-repo.git"
+REPO_URL="https://$GIT_USER:$GIT_TOKEN@github.com/thanhnhan262/playwright-github.git"
 TARGET_DIR="/app/tests"
 
 # Clean up any previous clone
@@ -18,9 +18,14 @@ git clone "$REPO_URL" "$TARGET_DIR"
 cd "$TARGET_DIR"
 
 # Install dependencies
-echo "Installing dependencies..."
-npm install
+echo "Installing project dependencies..."
+npm ci
+npx playwright install --with-deps
 
 # Run Playwright tests
 echo "Running Playwright tests..."
 npx playwright test
+
+# Copy test results to the host
+echo "Copying test report to mounted directory..."
+cp -r /app/tests/playwright-report/ /app/playwright-report
