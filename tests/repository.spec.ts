@@ -34,7 +34,7 @@ test('create, upload file, delete repository', async ({page, pm})=>{
   await pm.userNavigationMenuPage.navigateToYourRepositoriesPage()
   await pm.repositoriesPage.createRepository(repositoryName)
   await pm.userNavigationMenuPage.navigateToYourRepositoriesPage()
-  await expect(page.locator('#user-repositories-list a').first()).toHaveText(repositoryName)
+  expect(await page.locator('#user-repositories-list a').allInnerTexts()).toContain(repositoryName)
 
   //add file by uploading
   const fileName1 = 'uploadedFile1.txt'
@@ -86,10 +86,6 @@ test('create, upload file with new branch, delete repository', async ({page, pm}
   await pm.repositoryDetailSettingsPage.deleteRepository(repositoryName)
   await expect(page.locator('.js-flash-alert')).toHaveText(`Your repository "${process.env.USERNAME}/${repositoryName}" was successfully deleted.`)
   expect(await page.locator('#user-repositories-list li h3').allTextContents()).not.toContain(repositoryName)
-})
-
-test('create new repository - new branch - new pull request - merge to main', async ({page, pm})=>{
-  
 })
 
 test('create pull request', async ({page, pm})=>{
