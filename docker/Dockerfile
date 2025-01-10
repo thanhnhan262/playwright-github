@@ -12,5 +12,5 @@ COPY run-tests.sh /run-tests.sh
 RUN chmod +x /run-tests.sh
 
 # Default command to run tests
-CMD ["/run-tests.sh"]
+CMD ["bash", "-c", "/run-tests.sh $@"]
 
