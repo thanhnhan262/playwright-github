@@ -8,7 +8,7 @@ export default class CreateRepositoryPage{
     }
 
     async createRepository(repositoryName: string, description: string, isPrivate: boolean, gitIgnoreTeamplate: string, license: string){  
-        await this.page.locator('[data-testid="repository-name-input"]').fill(repositoryName)
+        await this.page.getByLabel('Repository name*').fill(repositoryName)
         await expect(this.page.getByText(`${repositoryName} is available.`)).toBeVisible()
         
         if(description != ''){

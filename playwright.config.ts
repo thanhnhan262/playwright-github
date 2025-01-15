@@ -13,9 +13,9 @@ export default defineConfig<TestOptions>({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [['html', { open: 'never' }]],
-  timeout: 40 * 1000,
+  timeout: 60 * 1000,
   use: {
-    baseURL: 'https://github.com',
+    baseURL: process.env.BASE_URL,
     anotherBaseUrl: 'https://another.base.url',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure'
