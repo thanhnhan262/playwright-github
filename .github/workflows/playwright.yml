@@ -1,13 +1,24 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  # push:
+  #   branches: [ main, master ]
+  # pull_request:
+  #   branches: [ main, master ]
+  workflow_dispatch: #for manual run
+    inputs:
+      environment:
+        description: 'Run test on environment:'
+        required: true
+        type: choice
+        options:
+          - QA
+          - UAT
+        default: stage
 jobs:
-  test:
+  manual-run:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -18,7 +29,11 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: |
+        echo Test is running on ${{github.event.inputs.environment}} environment ...
+        cmd="ENV=${{ github.event.inputs.environment }} npx playwright test
+        echo $cmd
+        eval $cmd
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
