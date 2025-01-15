@@ -11,8 +11,8 @@ on:
         required: true
         type: choice
         options:
-          - QA
-          - UAT
+          - qa
+          - uat
         default: stage
 jobs:
   manual-run:
@@ -31,7 +31,7 @@ jobs:
     - name: Run Playwright tests
       run: |
         echo Test is running on ${{github.event.inputs.environment}} environment ...
-        cmd="ENV=${{ github.event.inputs.environment }} npx playwright test
+        cmd="ENV=${{ github.event.inputs.environment }} npx playwright test"
         echo $cmd
         eval $cmd
     - uses: actions/upload-artifact@v4
