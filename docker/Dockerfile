@@ -1,8 +1,13 @@
-# Use the official Node.js image as the base
-FROM node:20-bookworm
+
+# Use the official Playwright image as the base
+FROM node:20-slim
+
+# Install git for cloning repositories
+RUN apt-get update && apt-get install -y git
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Playwright and its dependencies
-RUN npx -y playwright install --with-deps
+RUN npx -y playwright@1.53.0 install --with-deps
 
 # Set the working directory
 WORKDIR /app
