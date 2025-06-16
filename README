@@ -7,9 +7,7 @@ Local run:
   + run with qa environment: ENV=qa npm run test
 
 CI/CD - Github Actions run:
-- clone code to your local machine 
-- push code to your repository where you have perssion to run Github Actions
-- go to your repository on Github
+- open the repo: https://github.com/thanhnhan262/playwright-github (you are supposed to have access to this repo)
 - go to Actions tab
 - select 'Playwright Tests' workflow
 - click on 'Run workflow' button
