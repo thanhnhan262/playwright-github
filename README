@@ -1,3 +1,23 @@
+Local run:
+- clone code to your local machine
+- go into the cloned directory
+- install dependencies: npm install
+- run tests: npm run test //default environment is qa
+  + run with uat environment: ENV=uat npm run test
+  + run with qa environment: ENV=qa npm run test
+
+CI/CD - Github Actions run:
+- clone code to your local machine 
+- push code to your repository where you have perssion to run Github Actions
+- go to your repository on Github
+- go to Actions tab
+- select 'Playwright Tests' workflow
+- click on 'Run workflow' button
+- select the environment (qa/uat) and click on 'Run workflow' button
+- wait for the workflow to complete
+- check the results in the Actions tab under the workflow run
+- open the workflow run and look for the 'Artifacts' section
+- download 'playwright-report' under artifact
 
 Docker usage:
 - go into 'docker' directory
