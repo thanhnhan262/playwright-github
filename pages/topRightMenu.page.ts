@@ -1,15 +1,20 @@
 import { expect, Locator, Page } from "@playwright/test";
-import RepositoriesPage from "./repositoriesPage";
+import RepositoriesPage from "./repositories.page";
 
-export default class UserNavigationMenuPage{
+export default class TopRightMenu {
     readonly page: Page
-    public signedInUser: string
-    readonly profileIcon: Locator
+    private readonly profileIcon: Locator
 
     constructor(page: Page){
         this.page = page
         this.profileIcon = this.page.getByLabel('Open user navigation menu')
 
+    }
+
+    async navigateToProfilePage(){
+        await this.profileIcon.click()
+        await this.page.getByRole('link', { name: 'Your profile' }).click()
+        await expect(this.page.getByRole('button', { name: 'Edit profile' })).toBeVisible()
     }
 
     async navigateToYourRepositoriesPage(): Promise<RepositoriesPage>{

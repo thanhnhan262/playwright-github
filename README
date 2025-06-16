@@ -1,5 +1,11 @@
+
 Docker usage:
 - go into 'docker' directory
 - build docker image: docker build -t my-playwright .
 - run docker image: docker run -it --rm -e GIT_USER=username -e GIT_TOKEN=yourtoken -v $(pwd):/app/playwright-report my-playwright
 - look for 'playwright-report' in current directory for test reports
+
+
+Project notes:
+- Sign in method in global.setup.ts will run only once, and logged in session is stored, the remaining tests will use the stored session.
+- test environemnts are managed in test-envs directory. qa.env is the default environment.

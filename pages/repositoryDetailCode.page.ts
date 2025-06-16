@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from "@playwright/test";
-import PullRequestDetailPage from "./pullRequestDetailPage";
+import PullRequestDetailPage from "./pullRequestDetail.page";
 
 export default class RepositoryDetailCodePage{
     readonly page: Page

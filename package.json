@@ -9,10 +9,11 @@
   "description": "",
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.53.0",
     "@types/node": "^22.10.2"
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "otpauth": "^9.4.0"
   }
 }

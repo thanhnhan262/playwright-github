@@ -1,8 +1,7 @@
 import { expect, Page } from '@playwright/test'
 
-export default class TopMenuPage{
+export default class LandingPage{
     readonly page: Page
-    public signedInUser: string
 
     constructor(page: Page){
         this.page = page
