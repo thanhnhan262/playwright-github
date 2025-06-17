@@ -20,15 +20,15 @@ export default defineConfig<TestOptions>({
     anotherBaseUrl: 'https://another.base.url',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: 'on',
-    headless: false,
+    video: process.env.CI ? 'retain-on-failure' : 'on',
+    headless: process.env.CI ? true : false,
     actionTimeout: 10 * 1000,
     
     // Configure browser to start maximized
     // viewport: null,
     launchOptions: {
       args: ['--start-maximized'],
-      slowMo: 1000
+      slowMo: process.env.CI ? 0 : 1000
     }
   },
 

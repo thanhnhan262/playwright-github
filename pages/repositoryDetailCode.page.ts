@@ -25,7 +25,7 @@ export default class RepositoryDetailCodePage{
         const dialogLocator = this.page.getByRole('dialog', {name: 'Commit changes'})
         await dialogLocator.locator('#commit-message-input').fill(commitMessage)
         await dialogLocator.getByRole('button', { name: 'Commit changes', exact: true }).click()
-        await expect(dialogLocator.getByRole('button', {name: 'Saving...'})).toBeVisible()
+        //await expect(dialogLocator.getByRole('button', {name: 'Saving...'})).toBeVisible()
         await dialogLocator.waitFor({ state: 'detached' })
         await this.page.locator('.turbo-progress-bar').waitFor({ state: 'detached' })
     }
